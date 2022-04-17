@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <style>
+        *{
+			margin: 0;
+			padding: 0;
+		}
+		.img {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.5s;
+            width: 200px;
+            height: 200px;
+        }
+        h4{
+            font-size: 30px;
+             text-align: center;
+              color:#4E62FB;
+        }
+        .img:hover {
+            opacity: 0.7;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+         .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+         .modal-content,
+        .caption {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+
+        .picture{
+        	padding-top: 100px;
+        	padding-left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="picture">
+        <h4>Album quê hương</h4>
+        <img id="myImg2" class="img" src="que1.jpg" alt="Đường về nhà">
+         <img id="myImg2" class="img" src="que2.jpg" alt="Đường làng">
+          <img id="myImg2" class="img" src="que3.jpg" alt="Thổi sáo">
+        <img id="myImg3" class="img" src="que4.jpg" alt="Chăn trâu">
+        <img id="myImg4" class="img" src="que5.jpg" alt="Giếng làng">
+    </div>
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img src="" class="modal-content">
+        <div class="caption"></div>
+    </div>
+    <script>
+       $(function(){
+
+var modal = $('#myModal');
+var img = $('.img');
+var modalImg = $(".modal-content");
+var captionText = $(".caption");
+
+$('.img').click(function(){
+    var pic = $(this).attr('src');
+    $('#myModal').css({'display':'block'});
+    modalImg.attr('src',pic);
+    captionText.html(this.alt); 
+}) ;
+
+$(".close").click(function(){
+    $('#myModal').css({'display':'none'});
+});
+
+});
+    </script>
+</body>
+</html>
